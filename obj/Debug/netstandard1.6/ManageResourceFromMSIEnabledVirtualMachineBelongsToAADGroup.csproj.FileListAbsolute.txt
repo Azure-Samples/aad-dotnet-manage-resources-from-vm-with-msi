@@ -1,2 +1,0 @@
-C:\Sources\dotnet-samples\aad-dotnet-manage-resources-from-vm-with-msi\bin\Debug\netstandard1.6\ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup.deps.json
-C:\Sources\dotnet-samples\aad-dotnet-manage-resources-from-vm-with-msi\obj\Debug\netstandard1.6\ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup.csproj.CoreCompileInputs.cache

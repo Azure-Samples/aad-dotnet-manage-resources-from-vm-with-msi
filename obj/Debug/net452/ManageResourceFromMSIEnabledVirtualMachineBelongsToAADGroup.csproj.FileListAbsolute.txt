@@ -1,4 +1,0 @@
-C:\Sources\dotnet-samples\aad-dotnet-manage-resources-from-vm-with-msi\bin\Debug\net452\ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup.runtimeconfig.json
-C:\Sources\dotnet-samples\aad-dotnet-manage-resources-from-vm-with-msi\bin\Debug\net452\ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup.runtimeconfig.dev.json
-C:\Sources\dotnet-samples\aad-dotnet-manage-resources-from-vm-with-msi\obj\Debug\net452\ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup.csproj.ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup.exe.config
-C:\Sources\dotnet-samples\aad-dotnet-manage-resources-from-vm-with-msi\obj\Debug\net452\ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup.csproj.CoreCompileInputs.cache
