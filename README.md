@@ -1,57 +1,42 @@
-# Project Name
+---
+services: Aad
+platforms: .Net
+author: anuchandy
+---
 
-(short, 1-3 sentenced, description of the project)
+# Getting Started with Aad - Manage Resource From M S I Enabled Virtual Machine Belongs To A A D Group - in .Net #
 
-## Features
-
-This project framework provides the following features:
-
-* Feature 1
-* Feature 2
-* ...
-
-## Getting Started
-
-### Prerequisites
-
-(ideally very short, if any)
-
-- OS
-- Library version
-- ...
-
-### Installation
-
-(ideally very short)
-
-- npm install [package name]
-- mvn install
-- ...
-
-### Quickstart
-(Add steps to get up and running quickly)
-
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
+         Azure Compute sample for managing virtual machines -
+           - Create a AAD security group
+           - Assign AAD security group Contributor role at a resource group
+           - Create a virtual machine with MSI enabled
+           - Add virtual machine MSI service principal to the AAD group
+           - Set custom script in the virtual machine that
+                  - install az cli in the virtual machine
+                  - uses az cli MSI credentials to create a storage account
+           - Get storage account created through MSI credentials.
 
 
-## Demo
+## Running this Sample ##
 
-A demo app is included to show how to use the project.
+To run this sample:
 
-To run the demo, follow these steps:
+Set the environment variable `AZURE_AUTH_LOCATION` with the full path for an auth file. See [how to create an auth file](https://github.com/Azure/azure-sdk-for-net/blob/Fluent/AUTH.md).
 
-(Add steps to start up the demo)
+    git clone https://github.com/Azure-Samples/aad-dotnet-manage-resources-from-vm-with-msi.git
 
-1.
-2.
-3.
+    cd aad-dotnet-manage-resources-from-vm-with-msi
 
-## Resources
+    dotnet restore
 
-(Any additional resources or related projects)
+    dotnet run
 
-- Link to supporting information
-- Link to similar sample
-- ...
+## More information ##
+
+[Azure Management Libraries for C#](https://github.com/Azure/azure-sdk-for-net/tree/Fluent)
+[Azure .Net Developer Center](https://azure.microsoft.com/en-us/develop/net/)
+If you don't have a Microsoft Azure subscription you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212)
+
+---
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
