@@ -4,7 +4,7 @@ platforms: .Net
 author: anuchandy
 ---
 
-# Getting Started with Aad - Manage Resource From M S I Enabled Virtual Machine Belongs To A A D Group - in .Net #
+# Getting Started with Aad - Manage Resource From M S I Enabled Virtual Machine Belongs To AAD Group - in .Net #
 
          Azure Compute sample for managing virtual machines -
            - Create a AAD security group
