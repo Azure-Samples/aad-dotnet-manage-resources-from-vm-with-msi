@@ -14,25 +14,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup
+namespace ManageStorageFromMSIEnabledVirtualMachine
 {
     public class Program
     {
         /**
-        * Azure Compute sample for managing virtual machines -
-        *   - Create a AAD security group
-        *   - Assign AAD security group Contributor role at a resource group
-        *   - Create a virtual machine with MSI enabled
-        *   - Add virtual machine MSI service principal to the AAD group
-        *   - Set custom script in the virtual machine that
-        *          - install az cli in the virtual machine
-        *          - uses az cli MSI credentials to create a storage account
-        *   - Get storage account created through MSI credentials.
-        */
+         * Azure Compute sample for managing virtual machines -
+         *   - Create a virtual machine with Managed Service Identity enabled with access to resource group
+         *   - Set custom script in the virtual machine that
+         *        - install az cli in the virtual machine
+         *        - uses az cli MSI credentials to create a storage account
+         *   - Get storage account created through Managed Service Identity (MSI) credentials.
+         */
         public static void RunSample(IAzure azure)
         {
-            var groupName = Utilities.CreateRandomName("group");
-            var roleAssignmentName = SdkContext.RandomGuid();
             var linuxVMName = Utilities.CreateRandomName("VM1");
             var rgName = Utilities.CreateRandomName("rgCOMV");
             var pipName = Utilities.CreateRandomName("pip1");
@@ -46,39 +41,6 @@ namespace ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup
             fileUris.Add(installScript);
             try
             {
-                //=============================================================
-                // Create a AAD security group
-
-                Utilities.Log("Creating a AAD security group");
-
-                IActiveDirectoryGroup activeDirectoryGroup = azure.AccessManagement
-                        .ActiveDirectoryGroups
-                        .Define(groupName)
-                            .WithEmailAlias(groupName)
-                            .Create();
-
-                //=============================================================
-                // Assign AAD security group Contributor role at a resource group
-
-                IResourceGroup resourceGroup = azure.ResourceGroups
-                        .Define(rgName)
-                            .WithRegion(region)
-                            .Create();
-
-                SdkContext.DelayProvider.Delay(45 * 1000);
-
-                Utilities.Log("Assigning AAD security group Contributor role to the resource group");
-
-                azure.AccessManagement
-                        .RoleAssignments
-                        .Define(roleAssignmentName)
-                            .ForGroup(activeDirectoryGroup)
-                            .WithBuiltInRole(BuiltInRole.Contributor)
-                            .WithResourceGroupScope(resourceGroup)
-                            .Create();
-
-                Utilities.Log("Assigned AAD security group Contributor role to the resource group");
-
                 //=============================================================
                 // Create a Linux VM with MSI enabled for contributor access to the current resource group
 
@@ -97,25 +59,11 @@ namespace ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup
                     .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
                     .WithOSDiskCaching(CachingTypes.ReadWrite)
                     .WithManagedServiceIdentity()
+                    .WithRoleBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
                     .Create();
 
                 Utilities.Log("Created virtual machine with MSI enabled");
                 Utilities.PrintVirtualMachine(virtualMachine);
-
-                //=============================================================
-                // Add virtual machine MSI service principal to the AAD group
-
-                Utilities.Log("Adding virtual machine MSI service principal to the AAD group");
-
-                activeDirectoryGroup.Update()
-                        .WithMember(virtualMachine.ManagedServiceIdentityPrincipalId)
-                        .Apply();
-
-                Utilities.Log("Added virtual machine MSI service principal to the AAD group");
-
-                Utilities.Log("Waiting 10 minutes to MSI extension in the VM to refresh the token");
-
-                SdkContext.DelayProvider.Delay(10 * 60 * 1000);
 
                 // Prepare custom script to install az cli that uses MSI to create a storage account
                 //

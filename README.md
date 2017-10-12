@@ -4,17 +4,14 @@ platforms: .Net
 author: anuchandy
 ---
 
-# Getting Started with Aad - Manage Resource From MSI Enabled Virtual Machine Belongs To AAD Group - in .Net #
+# Getting Started with Aad - Manage Storage From MSI Enabled Virtual Machine - in .Net #
 
-         Azure Compute sample for managing virtual machines -
-           - Create a AAD security group
-           - Assign AAD security group Contributor role at a resource group
-           - Create a virtual machine with MSI enabled
-           - Add virtual machine MSI service principal to the AAD group
-           - Set custom script in the virtual machine that
-                  - install az cli in the virtual machine
-                  - uses az cli MSI credentials to create a storage account
-           - Get storage account created through MSI credentials.
+          Azure Compute sample for managing virtual machines -
+            - Create a virtual machine with Managed Service Identity enabled with access to resource group
+            - Set custom script in the virtual machine that
+                 - install az cli in the virtual machine
+                 - uses az cli MSI credentials to create a storage account
+            - Get storage account created through Managed Service Identity (MSI) credentials.
 
 
 ## Running this Sample ##
