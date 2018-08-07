@@ -1,10 +1,10 @@
 ---
-services: Aad
-platforms: .Net
+services: Compute
+platforms: dotnet
 author: anuchandy
 ---
 
-# Getting Started with Aad - Manage Storage From MSI Enabled Virtual Machine - in .Net #
+# Getting started on managing Azure resources from a virtual machine with managed service identity (MSI) using C# #
 
           Azure Compute sample for managing virtual machines -
             - Create a virtual machine with Managed Service Identity enabled with access to resource group
@@ -18,7 +18,7 @@ author: anuchandy
 
 To run this sample:
 
-Set the environment variable `AZURE_AUTH_LOCATION` with the full path for an auth file. See [how to create an auth file](https://github.com/Azure/azure-sdk-for-net/blob/Fluent/AUTH.md).
+Set the environment variable `AZURE_AUTH_LOCATION` with the full path for an auth file. See [how to create an auth file](https://github.com/Azure/azure-libraries-for-java/blob/master/AUTH.md).
 
     git clone https://github.com/Azure-Samples/aad-dotnet-manage-resources-from-vm-with-msi.git
 
