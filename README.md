@@ -4,7 +4,7 @@ platforms: dotnet
 author: anuchandy
 ---
 
-# Getting started on managing Azure resources from a virtual machine with managed service identity (MSI) using C# #
+# Getting started on managing Azure resources from a virtual machine with managed service identity (MSI) using C
 
           Azure Compute sample for managing virtual machines -
             - Create a virtual machine with Managed Service Identity enabled with access to resource group
@@ -13,8 +13,7 @@ author: anuchandy
                  - uses az cli MSI credentials to create a storage account
             - Get storage account created through Managed Service Identity (MSI) credentials.
 
-
-## Running this Sample ##
+## Running this Sample
 
 To run this sample:
 
@@ -28,9 +27,9 @@ Set the environment variable `AZURE_AUTH_LOCATION` with the full path for an aut
 
     dotnet run
 
-## More information ##
+## More information
 
-[Azure Management Libraries for C#](https://github.com/Azure/azure-sdk-for-net/tree/Fluent)
+[Azure Management Libraries for C#](https://github.com/Azure/azure-libraries-for-net)
 [Azure .Net Developer Center](https://azure.microsoft.com/en-us/develop/net/)
 If you don't have a Microsoft Azure subscription you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212)
 
