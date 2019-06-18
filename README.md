@@ -23,10 +23,10 @@ Set the environment variable `AZURE_AUTH_LOCATION` with the full path for an aut
     git clone https://github.com/Azure-Samples/aad-dotnet-manage-resources-from-vm-with-msi.git
 
     cd aad-dotnet-manage-resources-from-vm-with-msi
-
-    dotnet restore
-
-    dotnet run
+  
+    dotnet build
+    
+    bin\Debug\net452\ManageStorageFromMSIEnabledVirtualMachine.exe
 
 ## More information ##
 
