@@ -4,19 +4,19 @@ languages:
 - csharp
 products:
 - azure
-services: Compute
-platforms: dotnet
-author: yaohaizh
+extensions:
+- services: Compute
+- platforms: dotnet
 ---
 
 # Getting started on managing Azure resources from a virtual machine with managed service identity (MSI) using C# #
 
-          Azure Compute sample for managing virtual machines -
-            - Create a virtual machine with Managed Service Identity enabled with access to resource group
-            - Set custom script in the virtual machine that
-                 - install az cli in the virtual machine
-                 - uses az cli MSI credentials to create a storage account
-            - Get storage account created through Managed Service Identity (MSI) credentials.
+ Azure Compute sample for managing virtual machines -
+   - Create a virtual machine with Managed Service Identity enabled with access to resource group
+   - Set custom script in the virtual machine that
+        - install az cli in the virtual machine
+        - uses az cli MSI credentials to create a storage account
+   - Get storage account created through Managed Service Identity (MSI) credentials.
 
 
 ## Running this Sample ##
