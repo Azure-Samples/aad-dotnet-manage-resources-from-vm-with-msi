@@ -7,9 +7,10 @@ products:
 extensions:
 - services: Compute
 - platforms: dotnet
+description: "Azure Compute sample for managing virtual machines."
 ---
 
-# Getting started on managing Azure resources from a virtual machine with managed service identity (MSI) using C# #
+# Getting started on managing Azure resources from a virtual machine with managed service identity (MSI) using C#
 
  Azure Compute sample for managing virtual machines -
    - Create a virtual machine with Managed Service Identity enabled with access to resource group
