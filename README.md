@@ -5,8 +5,8 @@ languages:
 products:
 - azure
 extensions:
-- services: Compute
-- platforms: dotnet
+  services: Compute
+  platforms: dotnet
 ---
 
 # Getting started on managing Azure resources from a virtual machine with managed service identity (MSI) using C# #
