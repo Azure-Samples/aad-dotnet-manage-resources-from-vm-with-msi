@@ -39,6 +39,7 @@ namespace ManageStorageFromMSIEnabledVirtualMachine
             var networkConfigurationName = Utilities.CreateRandomName("networkconfiguration");
             var rgName = Utilities.CreateRandomName("rgCOMV");
             var pipName = Utilities.CreateRandomName("pip1");
+            var extensionName = Utilities.CreateRandomName("extension");
             var pipDnsLabelLinuxVM = Utilities.CreateRandomName("rgpip1");
             var userName = Utilities.CreateUsername();
             var password = Utilities.CreatePassword();
@@ -217,16 +218,22 @@ namespace ManageStorageFromMSIEnabledVirtualMachine
                 Utilities.Log("Installing custom script extension to configure az cli in the virtual machine");
                 Utilities.Log("az cli will use MSI credentials to create storage account");
 
-                virtualMachine.Update()
-                    .DefineNewExtension("CustomScriptForLinux")
-                        .WithPublisher("Microsoft.OSTCExtensions")
-                        .WithType("CustomScriptForLinux")
-                        .WithVersion("1.4")
-                        .WithMinorVersionAutoUpgrade()
-                        .WithPublicSetting("fileUris", fileUris)
-                        .WithPublicSetting("commandToExecute", installCommand)
-                    .Attach()
-                    .Apply();
+                var linuxSettings2 = new
+                {
+                    fileUris = fileUris,
+                    commandToExecute = installCommand
+                };
+                var linuxBinaryData = BinaryData.FromObjectAsJson(linuxSettings2);
+                var linuxVmExtensionData = new VirtualMachineExtensionData(AzureLocation.EastUS)
+                {
+                    Publisher = "Microsoft.OSTCExtensions",
+                    ExtensionType = "CustomScriptForLinux",
+                    TypeHandlerVersion = "1.4",
+                    AutoUpgradeMinorVersion = true,
+                    Settings = linuxBinaryData
+                };
+                var extensionCollection = virtualMachine.GetVirtualMachineExtensions();
+                var extension =(await extensionCollection.CreateOrUpdateAsync(WaitUntil.Completed, extensionName, linuxVmExtensionData)).Value;
 
                 // Retrieve the storage account created by az cli using MSI credentials
                 //
