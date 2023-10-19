@@ -9,7 +9,7 @@ using Azure.ResourceManager.Compute;
 using Azure.ResourceManager.ManagedServiceIdentities;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute.Models;
-using Microsoft.Azure.Management.Samples.Common;
+using Azure.ResourceManager.Samples.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
