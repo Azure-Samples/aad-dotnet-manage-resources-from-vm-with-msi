@@ -48,6 +48,7 @@ using Microsoft.Azure.Management.Msi.Fluent;
 using Microsoft.Azure.Management.Eventhub.Fluent;
 using Microsoft.Azure.Management.Monitor.Fluent;
 using Microsoft.Azure.Management.PrivateDns.Fluent;
+using Azure.ResourceManager.Storage;
 
 namespace Microsoft.Azure.Management.Samples.Common
 {
@@ -751,9 +752,9 @@ namespace Microsoft.Azure.Management.Samples.Common
             }
         }
 
-        public static void PrintStorageAccount(IStorageAccount storageAccount)
+        public static void PrintStorageAccount(StorageAccountResource storageAccount)
         {
-            Utilities.Log($"{storageAccount.Name} created @ {storageAccount.CreationTime}");
+            Utilities.Log($"{storageAccount.Data.Name} created @ {storageAccount.Data.CreatedOn}");
         }
 
         public static string CreateRandomName(string namePrefix)
