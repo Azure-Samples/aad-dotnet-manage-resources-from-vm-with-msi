@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using Azure.ResourceManager.Network.Models;
 using Azure.ResourceManager.Network;
 using Azure;
+using Azure.ResourceManager.Storage;
 
 namespace ManageStorageFromMSIEnabledVirtualMachine
 {
@@ -237,8 +238,7 @@ namespace ManageStorageFromMSIEnabledVirtualMachine
 
                 // Retrieve the storage account created by az cli using MSI credentials
                 //
-                var storageAccount = azure.StorageAccounts
-                        .GetByResourceGroup(rgName, stgName);
+                var storageAccount = resourceGroup.GetStorageAccount(stgName);
 
                 Utilities.Log("Storage account created by az cli using MSI credential");
                 Utilities.PrintStorageAccount(storageAccount);
@@ -248,7 +248,7 @@ namespace ManageStorageFromMSIEnabledVirtualMachine
                 try
                 {
                     Utilities.Log("Deleting Resource Group: " + rgName);
-                    azure.ResourceGroups.BeginDeleteByName(rgName);
+                    await resourceGroup.DeleteAsync(WaitUntil.Completed);
                 }
                 catch (NullReferenceException)
                 {
